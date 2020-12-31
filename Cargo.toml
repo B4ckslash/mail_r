@@ -13,3 +13,4 @@ mail-headers = "0.6.6"
 mail-smtp = "0.3.0"
 diesel = { version = "1.4.5", features = [ "mysql" ] }
 dotenv = "0.15.0"
+rust-argon2 = "0.8"
