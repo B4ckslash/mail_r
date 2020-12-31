@@ -4,8 +4,7 @@ pub mod schema;
 
 pub mod models;
 
-#[macro_use]
-use diesel::prelude::*;
+#[macro_use]use diesel::prelude::*;
 use diesel::mysql::MysqlConnection;
 use dotenv::dotenv;
 use std::env;
