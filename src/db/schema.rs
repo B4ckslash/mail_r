@@ -18,7 +18,7 @@ table! {
         id -> Integer,
         email -> Varchar,
         hash -> Nullable<Char>,
-        enabled -> Nullable<Bool>,
+        enabled -> Bool,
         ephem_token -> Nullable<Char>,
     }
 }

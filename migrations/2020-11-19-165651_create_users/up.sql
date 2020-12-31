@@ -2,7 +2,7 @@ CREATE TABLE members (
     id INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(320) UNIQUE NOT NULL,
     hash CHAR(100),
-    enabled BOOLEAN DEFAULT FALSE,
+    enabled BOOLEAN NOT NULL DEFAULT FALSE,
     ephem_token CHAR(64),
 
     PRIMARY KEY(id)

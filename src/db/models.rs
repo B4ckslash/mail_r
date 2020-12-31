@@ -1,11 +1,19 @@
 use super::schema::members;
-#[derive(Queryable)]
+#[derive(Queryable, Identifiable)]
 pub struct Member {
     pub id: i32,
     pub email: String,
     pub hash: Option<String>,
-    pub enabled: Option<bool>,
+    pub enabled: bool,
     pub token: Option<String>,
+}
+
+#[derive(Default, AsChangeset)]
+#[table_name="members"]
+pub struct MemberUpdate<'a> {
+    pub email: Option<&'a str>,
+    pub hash: Option<&'a str>,
+    pub enabled: Option<bool>,
 }
 
 #[derive(Insertable)]
