@@ -1,5 +1,6 @@
 table! {
-    list_member_relation (list, member) {
+    list_member_relation (id) {
+        id -> Integer,
         list -> Integer,
         member -> Integer,
     }

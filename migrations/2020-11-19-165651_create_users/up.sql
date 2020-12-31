@@ -9,10 +9,11 @@ CREATE TABLE members (
 );
 
 CREATE TABLE list_member_relation (
+    id INT NOT NULL AUTO_INCREMENT,
     list INT NOT NULL,
     member INT NOT NULL,
 
-    PRIMARY KEY(list, member),
+    PRIMARY KEY(id),
 
     FOREIGN KEY (list)
         REFERENCES lists(id)
@@ -20,6 +21,8 @@ CREATE TABLE list_member_relation (
     FOREIGN KEY (member)
         REFERENCES members(id)
         ON UPDATE CASCADE ON DELETE CASCADE,
+
+    CONSTRAINT UNIQUE KEY list_member_unq (list, member),
 
     INDEX( member )
 );
