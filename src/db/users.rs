@@ -1,4 +1,5 @@
 use diesel::mysql::MysqlConnection;
+use diesel::result::QueryResult;
 use diesel::prelude::*;
 use super::models::*;
 
@@ -37,13 +38,12 @@ pub fn update_user(conn: &MysqlConnection, user: &Option<Member>, data: &MemberU
     };
 }
 
-pub fn delete_user(conn: &MysqlConnection, user: &Option<Member>) {
+pub fn delete_user(conn: &MysqlConnection, user: &Option<Member>) -> QueryResult<usize> {
     match user{
         Some(member) => diesel::delete(member)
-                                .execute(conn)
-                                .expect(format!("Failed to delete user with ID {}", member.id).as_ref()),
-        None => 0,
-    };
+                                .execute(conn),
+        None => Ok(0)
+    }
 }
 
 pub fn get_user_by_email<'a>(conn: &MysqlConnection, expected_email: &'a str) -> Option<Member> {
